@@ -15,3 +15,5 @@ dialog{position:fixed;inset:0;margin:auto;border:1px solid var(--line);backgroun
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
 
 .project-actions{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:15px}.project-actions .text-link{margin-top:0}
+
+.about-portrait{margin:34px 0 0;max-width:480px}.about-portrait img{width:100%;height:auto}.about-portrait figcaption{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);font-size:8px;color:var(--muted)}.about-copy{align-self:center}@media(max-width:700px){.about-portrait{max-width:none;margin-top:25px}}
