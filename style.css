@@ -17,3 +17,22 @@ dialog{position:fixed;inset:0;margin:auto;border:1px solid var(--line);backgroun
 .project-actions{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:15px}.project-actions .text-link{margin-top:0}
 
 .about-portrait{margin:34px 0 0;max-width:480px}.about-portrait img{width:100%;height:auto}.about-portrait figcaption{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);font-size:8px;color:var(--muted)}.about-copy{align-self:center}@media(max-width:700px){.about-portrait{max-width:none;margin-top:25px}}
+
+/* Keep the dashboard intact while giving its project story equal space. */
+.featured-project{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(28px,5vw,76px);align-items:center}
+.featured-visual{padding:28px 24px 24px}
+.screenshot-button img{max-height:610px;object-fit:contain}
+.featured-description{display:flex;flex-direction:column;gap:26px;margin:0}
+.featured-description h3{font-size:clamp(44px,5vw,72px)}
+.project-facts{margin:28px 0 10px;font-size:11px}
+.project-facts>div{display:flex;justify-content:space-between;gap:18px;padding:12px 0;border-top:1px solid var(--line)}
+.project-facts dt{color:var(--muted)}.project-facts dd{margin:0;text-align:right}
+.hero-description,.featured-description p:not(.project-kind),.compact-project>p,.about-copy p,.process-intro>p:not(.eyebrow),.stage-content p,.contact-content p{font-size:14px;line-height:1.85}
+.text-link,.contact-cta{font-size:12px;min-height:44px}
+.hero-description{max-width:30ch}.hero-foot{font-size:11px}
+.visual-foot,.project-heading>span,.about-portrait figcaption,.small-note,.toolbox dl>div{font-size:11px}
+.project-actions{gap:10px 24px}.process-tabs button{min-height:48px;font-size:12px}
+nav{font-size:12px}nav a{min-height:44px;display:inline-flex;align-items:center}
+@media(max-width:900px){.featured-project{grid-template-columns:1fr}.featured-description{display:grid;grid-template-columns:1fr 1.2fr;gap:30px}.screenshot-button img{max-height:570px}}
+@media(max-width:700px){.featured-description{display:flex;gap:18px}.hero-copy{grid-template-columns:1fr}.hero-copy h2{font-size:46px}.hero-description{max-width:42ch;margin:0}.hero-copy .text-link{padding:6px 0}.hero-composition{top:340px}.hero{min-height:920px}.hero-description,.featured-description p:not(.project-kind),.compact-project>p,.about-copy p,.process-intro>p:not(.eyebrow),.stage-content p,.contact-content p{font-size:13px}.hero-foot{font-size:9px}.featured-visual{padding:22px 18px}.project-visual-heading{flex-wrap:wrap;gap:10px}.visual-foot{font-size:9px;flex-wrap:wrap}.toolbox dl>div{flex-direction:column;gap:4px;font-size:12px}.toolbox dd{text-align:left}.project-heading{flex-wrap:wrap}.project-heading>span{font-size:10px}nav{gap:14px;font-size:11px}.header{padding:0 20px}.about-portrait figcaption{font-size:10px}.contact footer{font-size:9px}}
+@media(max-width:380px){.brand{font-size:23px}nav{gap:10px}.hero-copy h2{font-size:41px}.hero-composition{top:355px}.hero{min-height:890px}}
