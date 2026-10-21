@@ -13,7 +13,7 @@ class Element {
   close() { this.open = false; this.listeners.close?.(); }
   getBoundingClientRect() { return {left: 10, right: 500, top: 10, bottom: 600}; }
 }
-const projectButtons = ['autodev', 'leadfinder', 'kalvio'].map(project => new Element({project}));
+const projectButtons = ['autodev', 'leadfinder', 'kalvio', 'desk', 'karchi'].map(project => new Element({project}));
 const tabs = ['brief', 'build', 'review', 'approve'].map(stage => new Element({stage}, `tab-${stage}`));
 const elements = new Map();
 const document = {
@@ -23,12 +23,20 @@ const document = {
 };
 vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../app.js'), 'utf8'), {document, Date});
 const dialog = elements.get('#project-dialog');
-for (const [index, name] of ['AutoDev Agents', 'Lead Finder', 'Kalvio Build'].entries()) {
+// Public repos link to their source; private ones link to a live demo instead, never a 404.
+for (const [index, [name, link, label]] of [
+  ['AutoDev Agents', /^https:\/\/github.com\/karthikkushi\//, 'Explore the repository'],
+  ['Lead Finder', /^https:\/\/github.com\/karthikkushi\//, 'Explore the repository'],
+  ['Kalvio Build', /^https:\/\/github.com\/karthikkushi\//, 'Explore the repository'],
+  ['Kalvio Desk', /^https:\/\/kalvio-desk\.pages\.dev\//, 'Open the live demo (sign-in required)'],
+  ['Karchi', /^https:\/\/karchi-ten\.vercel\.app\/demo\//, 'Open the live demo'],
+].entries()) {
   projectButtons[index].listeners.click();
   assert.equal(dialog.open, true);
   assert.equal(elements.get('#dialog-title').textContent, name);
   assert.equal(elements.get('#dialog-sections').children.length, 4);
-  assert.match(elements.get('#dialog-source').href, /^https:\/\/github.com\/karthikkushi\//);
+  assert.match(elements.get('#dialog-source').href, link);
+  assert.equal(elements.get('#dialog-source-label').textContent, label);
   elements.get('.close-dialog').listeners.click();
   assert.equal(dialog.open, false);
   assert.equal(projectButtons[index].focused, true, 'Closing returns focus to opener');
