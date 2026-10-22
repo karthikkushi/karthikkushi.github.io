@@ -28,6 +28,26 @@ const projects = {
       ['A deliberate decision', 'A sharing flow makes the preview part of a real conversation: a website image, short video, and personalized link can be prepared for a business owner.'],
       ['Implementation', 'React, TypeScript, and Vite, with business presets, theme definitions, personalization routes, and a sharing kit. The sample-first approach makes the result tangible before a business owner commits.']
     ], url: 'https://github.com/karthikkushi/kalvio-build'
+  },
+  desk: {
+    name: 'Kalvio Desk', kind: 'Clinic software / Product development',
+    intro: 'A front desk for small clinics: today’s patients, bills, records, and a dashboard for the doctor.',
+    sections: [
+      ['The problem', 'Small clinics often run reception on paper and WhatsApp. Token numbers, bills and follow-ups live in different places, and the doctor has no simple view of how the month is going.'],
+      ['The approach', 'A React and TypeScript app on Supabase: a Today list with token numbers, walk-ins and website bookings; bills paid by UPI, cash, card or later; products with stock; patient records with prescriptions; and a dashboard for the doctor.'],
+      ['A deliberate decision', 'Each clinic’s data is kept apart by database rules, not only by the app, and a receptionist cannot open notes, prescriptions or the dashboard. 224 database tests check these rules, alongside 160 unit tests and 51 browser tests.'],
+      ['Status & stack', 'Version 1 for clinics is complete. React, TypeScript, Vite, Supabase (Postgres with row-level security) and Cloudflare Pages. The live demo clinic uses made-up patients and resets every night.']
+    ], url: 'https://kalvio-desk.pages.dev/', label: 'Open the live demo (sign-in required)'
+  },
+  karchi: {
+    name: 'Karchi', kind: 'Messaging automation / Real estate',
+    intro: 'A reply on WhatsApp within a minute of a property enquiry, so a broker does not lose the buyer.',
+    sections: [
+      ['The problem', 'Property buyers send enquiries to several brokers at once. A broker who replies hours later has usually lost them.'],
+      ['The approach', 'A small Python server takes enquiries from portal emails, website forms and ads, starts a WhatsApp chat with an approved template, asks for budget and move-in date, offers a site visit, and gives the broker a morning summary.'],
+      ['A deliberate decision', 'AI only reads the buyer’s reply (English, Hindi, Telugu, Hinglish) and writes at most one short sentence; plain code decides the next step. If the free AI providers fail, simple rules take over, and the chat stops when the buyer says STOP.'],
+      ['Status & stack', 'Working and tested, not yet connected to a broker’s own WhatsApp Business number. Python standard library, SQLite and the WhatsApp Cloud API, with free AI tiers tried in turn.']
+    ], url: 'https://karchi-ten.vercel.app/demo/', label: 'Open the live demo'
   }
 };
 const stages = {
@@ -46,6 +66,7 @@ document.querySelectorAll('[data-project]').forEach(button => button.addEventLis
   document.querySelector('#dialog-kind').textContent = project.kind;
   document.querySelector('#dialog-intro').textContent = project.intro;
   document.querySelector('#dialog-source').href = project.url;
+  document.querySelector('#dialog-source-label').textContent = project.label || 'Explore the repository';
   const sections = project.sections.map(([heading, body]) => {
     const section = document.createElement('section');
     const h = document.createElement('h3'); h.textContent = heading;
