@@ -48,6 +48,16 @@ const projects = {
       ['A deliberate decision', 'AI only reads the buyer’s reply (English, Hindi, Telugu, Hinglish) and writes at most one short sentence; plain code decides the next step. If the free AI providers fail, simple rules take over, and the chat stops when the buyer says STOP.'],
       ['Status & stack', 'Working and tested, not yet connected to a broker’s own WhatsApp Business number. Python standard library, SQLite and the WhatsApp Cloud API, with free AI tiers tried in turn.']
     ], url: 'https://karchi-ten.vercel.app/demo/', label: 'Open the live demo'
+  },
+  kelvra: {
+    name: 'Kelvra', kind: 'Education / AI study app',
+    intro: 'Study material made from a student’s own notes, not a generic question bank.',
+    sections: [
+      ['The problem', 'Students preparing for exams spend hours turning their notes into something they can revise from. Generic flashcard decks rarely match what their own class covered.'],
+      ['The approach', 'Paste notes or upload a PDF or a photo of handwriting, and Kelvra makes flashcards, a quiz, a summary and a 5-day study plan, in any of 10 languages. It installs as an app (PWA), with sign-in and saved progress on Supabase.'],
+      ['A deliberate decision', 'The browser never sees the AI key. Requests go through a server-side Vercel function that checks the user is signed in, adds the Groq key, and picks a text model or a vision model for photos and handwriting.'],
+      ['Status & stack', 'Live on Vercel. React, Vite, Tailwind CSS, Supabase and Groq, with tests for the AI server function.']
+    ], url: 'https://github.com/karthikkushi/kelvra'
   }
 };
 const stages = {

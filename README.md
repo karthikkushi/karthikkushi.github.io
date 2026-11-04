@@ -1,6 +1,6 @@
 # Karthikein M R: portfolio
 
-**What:** my personal site: who I am and three projects I built (AutoDev Agents, Lead Finder, Kalvio Build).
+**What:** my personal site: who I am, my work experience, and six projects I built (AutoDev Agents, Lead Finder, Kalvio Build, Kalvio Desk, Karchi, Kelvra), with a résumé download.
 **For:** clients and employers who want to see my work and contact me.
 **Run:** in this folder, `python3 -m http.server 8000`, then open http://localhost:8000. No install, no build step.
 

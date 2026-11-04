@@ -13,7 +13,7 @@ class Element {
   close() { this.open = false; this.listeners.close?.(); }
   getBoundingClientRect() { return {left: 10, right: 500, top: 10, bottom: 600}; }
 }
-const projectButtons = ['autodev', 'leadfinder', 'kalvio', 'desk', 'karchi'].map(project => new Element({project}));
+const projectButtons = ['autodev', 'leadfinder', 'kalvio', 'desk', 'karchi', 'kelvra'].map(project => new Element({project}));
 const tabs = ['brief', 'build', 'review', 'approve'].map(stage => new Element({stage}, `tab-${stage}`));
 const elements = new Map();
 const document = {
@@ -30,6 +30,7 @@ for (const [index, [name, link, label]] of [
   ['Kalvio Build', /^https:\/\/github.com\/karthikkushi\//, 'Explore the repository'],
   ['Kalvio Desk', /^https:\/\/kalvio-desk\.pages\.dev\//, 'Open the live demo (sign-in required)'],
   ['Karchi', /^https:\/\/karchi-ten\.vercel\.app\/demo\//, 'Open the live demo'],
+  ['Kelvra', /^https:\/\/github.com\/karthikkushi\//, 'Explore the repository'],
 ].entries()) {
   projectButtons[index].listeners.click();
   assert.equal(dialog.open, true);
@@ -62,8 +63,11 @@ assert.equal(tabs.filter(tab => tab.tabIndex === 0).length, 1);
 assert.equal(elements.get('.stage-number').textContent, '02');
 const root = path.join(__dirname, '..');
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+for (const project of projectButtons.map(b => b.dataset.project)) assert.ok(html.includes(`data-project="${project}"`), `No card for ${project}`);
+assert.match(html, /id="experience"/);
+assert.match(html, /mailto:/);
 for (const match of html.matchAll(/(?:src|href)="([^"#]+)"/g)) {
-  if (/^(?:https?:|data:)/.test(match[1])) continue;
+  if (/^(?:https?:|data:|mailto:)/.test(match[1])) continue;
   assert.ok(fs.existsSync(path.join(root, match[1].split("?")[0])), `Missing local asset: ${match[1]}`);
 }
 for (const anchor of html.matchAll(/href="#([^"]+)"/g)) assert.ok(html.includes(`id="${anchor[1]}"`), `Broken navigation: ${anchor[1]}`);
